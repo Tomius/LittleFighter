@@ -68,7 +68,7 @@ void Wait_Flip_Thread()
 }
 
 /** Hozzáad egy tégalalpot a listához (lsd Blitsurface) */
-inline void Rect_add(Rect *list, const SDL_Rect *rect) {
+void Rect_add(Rect *list, const SDL_Rect *rect) {
     if(list->size < 499 && (list->rect[0].w != kx || list->rect[0].h != ky) && (rect->w != kx || rect->h != ky))
         list->rect[(list->size)++] = *rect;
     else {
