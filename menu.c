@@ -27,12 +27,12 @@ int Draw_menu(SDL_Surface *screen) {
 
     // Jobb alsó szöveg
     SDL_Color grey = {140, 140, 140};
-    SDL_Surface *text = RenderText(Cour15, "This game is created by", grey);
+    SDL_Surface *text = RenderText(Cour15, "This game was created by", grey);
     int w = text->w;
     SDL_Rect textRect = {kx - text->w - 10, ky - 2 * text->h - 20, 0, 0};
     SDL_BlitSurface(text, NULL, screen, &textRect);
     SDL_FreeSurface(text);
-    text = RenderText(Cour15, "Csala Tam\xC3\xA1s", grey);
+    text = RenderText(Cour15, "Tam\xC3\xA1s Csala", grey);
     textRect.x += (w / 2 - text->w/2);
     textRect.y = ky - text->h - 10;
     SDL_BlitSurface(text, NULL, screen, &textRect);
@@ -154,12 +154,12 @@ int Select_Difficulty(SDL_Surface *screen) {
 
     // Jobb alsó szöveg
     SDL_Color grey = {140, 140, 140};
-    SDL_Surface *text = RenderText(Cour15, "This game is created by", grey);
+    SDL_Surface *text = RenderText(Cour15, "This game was created by", grey);
     int w = text->w;
     SDL_Rect textRect = {kx - text->w - 10, ky - 2 * text->h - 20, 0, 0};
     SDL_BlitSurface(text, NULL, screen, &textRect);
     SDL_FreeSurface(text);
-    text = RenderText(Cour15, "Csala Tam\xC3\xA1s", grey);
+    text = RenderText(Cour15, "Tam\xC3\xA1s Csala", grey);
     textRect.x += (w / 2 - text->w/2);
     textRect.y = ky - text->h - 10;
     SDL_BlitSurface(text, NULL, screen, &textRect);
@@ -252,13 +252,13 @@ void Loading_screen(SDL_Surface *screen) {
     SDL_FreeSurface(text);
 
     SDL_Color grey = {140, 140, 140};
-    text = RenderText(Cour15, "This game is created by", grey);
+    text = RenderText(Cour15, "This game was created by", grey);
     int w = text->w;
     textRect.x = kx - text->w - 10;
     textRect.y = ky - 2 * text->h - 20;
     SDL_BlitSurface(text, NULL, screen, &textRect);
     SDL_FreeSurface(text);
-    text = RenderText(Cour15, "Csala Tam\xC3\xA1s", grey);
+    text = RenderText(Cour15, "Tam\xC3\xA1s Csala", grey);
     textRect.x += (w / 2 - text->w/2);
     textRect.y = ky - text->h - 10;
     SDL_BlitSurface(text, NULL, screen, &textRect);
@@ -517,7 +517,7 @@ void Credits_menu(SDL_Surface *screen) {
     SDL_BlitSurface(text, NULL, screen, &titlerect);
     SDL_FreeSurface(text);
 
-    text = RenderText(Cour25, "This game was created by Csala Tam\xC3\xA1s.", white);
+    text = RenderText(Cour25, "This game was created by Tam\xC3\xA1s Csala.", white);
     SDL_Rect creditsrect = {kx/2 - text->w/2, ky/2 - text->h/2 - 20*scale, 0, 0};
     SDL_BlitSurface(text, NULL, screen, &creditsrect);
     SDL_FreeSurface(text);

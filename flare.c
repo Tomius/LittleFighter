@@ -266,7 +266,7 @@ void Animate_Flare(int Tick, struct character *player, struct projectile **projs
         player->dmg = player->melee.s_dmg;
         break;
     case a_ranged:
-        if(Tick%5 == 0) {
+        if(Tick%4 == 0) {
             player->state++;
             if(player->state == 4)
                 (*projs) = summon_projectile((*projs), player, normal);
@@ -281,7 +281,7 @@ void Animate_Flare(int Tick, struct character *player, struct projectile **projs
         player->dmg = player->ranged.a_dmg;
         break;
     case s_ranged:
-        if(Tick%7 == 0) {
+        if(Tick%6 == 0) {
             player->state++;
             if(player->state == player->s_cast_No) {
                 (*projs) = summon_projectile((*projs), player, shift);

@@ -133,6 +133,9 @@ void Change_States(bool *keydown, bool *justpressed, bool *justreleased, int mou
                 player->act = a_walk;
                 player->ranged.a_cd = GetTicks() + player->state * player->a_cast_cd / player->a_cast_No;
                 player->state = 0;
+            } else if (player->act == def) {
+                player->act = a_walk;
+                player->state = 0;
             }
         }
         // S
@@ -141,6 +144,9 @@ void Change_States(bool *keydown, bool *justpressed, bool *justreleased, int mou
             if(player->act == a_ranged && player->state > 2) {
                 player->act = a_walk;
                 player->ranged.a_cd = GetTicks() + player->state * player->a_cast_cd / player->a_cast_No;
+                player->state = 0;
+            } else if (player->act == def) {
+                player->act = a_walk;
                 player->state = 0;
             }
         }
@@ -158,6 +164,10 @@ void Change_States(bool *keydown, bool *justpressed, bool *justreleased, int mou
                 player->dir = left;
                 player->ranged.a_cd = GetTicks() + player->state * player->a_cast_cd / player->a_cast_No;
                 player->state = 0;
+            } else if (player->act == def) {
+                player->act = a_walk;
+                player->dir = left;
+                player->state = 0;
             }
         }
         // D
@@ -169,6 +179,10 @@ void Change_States(bool *keydown, bool *justpressed, bool *justreleased, int mou
                 player->act = a_walk;
                 player->dir = right;
                 player->ranged.a_cd = GetTicks() + player->state * player->a_cast_cd / player->a_cast_No;
+                player->state = 0;
+            } else if (player->act == def) {
+                player->act = a_walk;
+                player->dir = right;
                 player->state = 0;
             }
         }
@@ -188,8 +202,8 @@ void Change_States(bool *keydown, bool *justpressed, bool *justreleased, int mou
                 }
 
         // Dash (s_walk)
-        if( (keydown[a] || keydown[d]) && keydown[left_shift])
-            if(!player->jump.second && (player->act == a_walk || player->act == jump) && player->s_walk_No != 0)
+        if( (keydown[a] || keydown[d]) && keydown[left_shift]) {
+            if( (player->act == a_walk || player->act == jump || player->act == flip) && player->s_walk_No != 0) {
                 if(player->walk.cd < GetTicks()) {
                     player->act = s_walk;
                     player->vx = player->dir == right ? 7 : -7;
@@ -197,6 +211,8 @@ void Change_States(bool *keydown, bool *justpressed, bool *justreleased, int mou
                     player->walk.state = 0;
                     player->walk.cd = GetTicks() + player->s_walk_cd;
                 }
+            }
+        }
         // Space
         if(justpressed[space]) {
             if((player->act == a_walk || player->act == jump) && !player->jump.second)
@@ -235,6 +251,23 @@ void Change_States(bool *keydown, bool *justpressed, bool *justreleased, int mou
                 }
         }
 
+        // Bal + jobb klikk
+        if((justreleased[left_click] && keydown[right_click])
+                || (justreleased[right_click] && keydown[left_click])
+                || (justreleased[left_click] && justreleased[right_click])) {
+            // Counter
+            if(player->counter_No != 0 && (player->act == hit || player->act == a_melee || player->act == a_walk || player->act == ground) && player->stunned == false) {
+                if ((player->dir == right && player->counter.ra != NULL)
+                        || (player->dir == left && player->counter.la != NULL)) {
+                    if(player->counter.cd < GetTicks()) {
+                        player->act = counter;
+                        player->state = 0;
+                        player->counter.cd = GetTicks() + player->counter_cd;
+                    }
+                }
+            }
+        }
+
         // Bal klikk
         if(justreleased[left_click]) {
             if(!keydown[left_shift]) {
@@ -254,8 +287,7 @@ void Change_States(bool *keydown, bool *justpressed, bool *justreleased, int mou
                         player->melee.next = 13 - player->state;
                 }
                 // Jump attack
-                else if( player->jump_attack_No != 0 && (player->act == jump || player->act == s_walk) && !player->jump.second
-                         && player->shadowRect.y - ( player->loc.y + framesize + 4) > 25 ) {
+                else if( player->jump_attack_No != 0 && (player->act == jump || player->act == s_walk) ) {
                     if ((player->dir == right && player->jump.rattack != NULL)
                             || (player->dir == left && player->jump.lattack != NULL)) {
                         if(player->jump.cd1 < GetTicks()) {
@@ -298,8 +330,7 @@ void Change_States(bool *keydown, bool *justpressed, bool *justreleased, int mou
 
                 }
                 // Jump attack2
-                else if(player->jump_attack2_No != 0 && (player->act == jump || player->act == s_walk) && !player->jump.second
-                        && player->shadowRect.y - ( player->loc.y + framesize + 4) > 15 ) {
+                else if(player->jump_attack2_No != 0 && (player->act == jump || player->act == s_walk)) {
                     if ((player->dir == right && player->jump.rattack2 != NULL)
                             || (player->dir == left && player->jump.lattack2 != NULL)) {
                         if(player->jump.cd2 < GetTicks()) {
@@ -327,22 +358,6 @@ void Change_States(bool *keydown, bool *justpressed, bool *justreleased, int mou
                             && player->ranged.ls_proj != NULL)) {
                     player->act = s_ranged;
                     player->state = 0;
-                }
-            }
-        }
-        // Bal + jobb klikk
-        if((justreleased[left_click] && keydown[right_click])
-                || (justreleased[right_click] && keydown[left_click])
-                || (justreleased[left_click] && justreleased[right_click])) {
-            // Counter
-            if(player->counter_No != 0 && (player->act == hit || player->act == a_melee || player->act == a_walk || player->act == ground) && player->stunned == false) {
-                if ((player->dir == right && player->counter.ra != NULL)
-                        || (player->dir == left && player->counter.la != NULL)) {
-                    if(player->counter.cd < GetTicks()) {
-                        player->act = counter;
-                        player->state = 0;
-                        player->counter.cd = GetTicks() + player->counter_cd;
-                    }
                 }
             }
         }

@@ -8,7 +8,7 @@ typedef struct Rect {
 } Rect;
 extern Rect rectList_old;
 
-inline void Rect_add(Rect *list, const SDL_Rect *rect);
+void Rect_add(Rect *list, const SDL_Rect *rect);
 void BlitSurface (SDL_Surface *src, SDL_Rect *srcRect, SDL_Surface *dest, SDL_Rect *destRect);
 void Flip(void *screen);
 void Wait_Flip_Thread();

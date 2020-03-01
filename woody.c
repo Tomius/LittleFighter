@@ -23,7 +23,7 @@ void Init_Woody(struct character *c) {
     c->a_melee_No = 13;
     c->s_melee_No = 9;
     c->a_cast_No = 10;
-    c->s_cast_No = 2;
+    c->s_cast_No = 1;
     c->a_proj_No = 4;
     c->s_proj_No = 6;
     c->a_exp_No = 4;
