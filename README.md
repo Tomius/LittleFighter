@@ -15,4 +15,4 @@ Some screenshots:
 ![screenshot](screenshot2.jpg)
 
 ----------------------
-If you have any problem, please post in the issues tab or mail me at tomius1994@gmail.com. Any feedback would be appreciated.
+If you have any problem, please post in the issues tab or mail me at icyplusplus@gmail.com. Any feedback would be appreciated.
