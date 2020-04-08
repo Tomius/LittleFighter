@@ -8,7 +8,12 @@ You need [SDL 1.2](http://www.libsdl.org/download-1.2.php) to run this game.
 
 Use the given Makefile to build, and ./LittleFighter to run.
 
+A short video of level 1:
+-------------------------
+https://youtu.be/s8v0Lihsq8A 
+
 Some screenshots:
+-----------------
 
 ![screenshot](screenshot0.jpg)
 ![screenshot](screenshot1.jpg)
