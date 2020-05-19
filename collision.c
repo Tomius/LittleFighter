@@ -280,8 +280,8 @@ void Animate_collision(struct character *chars) {
                     iter->walk.vx = -1;
             }
             if((kyTop + framesize < iter->shadowRect.y && iter->impulse_z < 0) || (iter->shadowRect.y < kyBottom && 0 < iter->impulse_z)) {
-                iter->loc.y += iter->impulse_z * (int)round(scale) * iter->collision_modifier;
-                iter->shadowRect.y += iter->impulse_z * (int)round(scale) * iter->collision_modifier;
+                //iter->loc.y += iter->impulse_z * (int)round(scale) * iter->collision_modifier;
+                //iter->shadowRect.y += iter->impulse_z * (int)round(scale) * iter->collision_modifier;
                 if(iter->act == a_walk && iter->impulse_z != 0) {
                     if(iter->impulse_z > 0)
                         iter->walk.vz = 1;

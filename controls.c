@@ -126,6 +126,7 @@ void Key_Presses(bool keydown[keys_num], bool justpressed[keys_num], bool justre
 void Change_States(bool *keydown, bool *justpressed, bool *justreleased, int mouse_x, int mouse_y, struct character *player) {
     // Benchmark módban nincs player, ezért ekkor ne próbálja meg a player adattagjait módostani a program
     if(!benchmark) {
+        /*
         // W
         if(keydown[w] && !keydown[s]) {
             player->walk.vz = -1;
@@ -153,6 +154,7 @@ void Change_States(bool *keydown, bool *justpressed, bool *justreleased, int mou
         // alap
         else if(!keydown[w] && !keydown[s])
             player->walk.vz = 0;
+        */
 
         // A
         if(keydown[a] && !keydown[d]) {

@@ -204,9 +204,9 @@ static void Screen_init(SDL_Surface **screen) {
 
     SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO);
 
-    *screen = SDL_SetVideoMode(0, 0, 0, SDL_ASYNCBLIT|SDL_ANYFORMAT|SDL_FULLSCREEN);
+    //*screen = SDL_SetVideoMode(0, 0, 0, SDL_ASYNCBLIT|SDL_ANYFORMAT|SDL_FULLSCREEN);
     // Debuggoláshoz előnyös ha a progi nem full screenbe fut (Valgrindhoz különösen)
-    //*screen = SDL_SetVideoMode( 1024 , 576 , 0, SDL_ASYNCBLIT|SDL_ANYFORMAT);
+    *screen = SDL_SetVideoMode( 1024 , 576 , 0, SDL_ASYNCBLIT|SDL_ANYFORMAT);
 
     kx = (*screen)->w;
     ky = (*screen)->h;

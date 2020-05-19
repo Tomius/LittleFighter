@@ -105,8 +105,8 @@ void Animate_Flare(int Tick, struct character *player, struct projectile **projs
             player->loc.x += (player->walk.vx * 3 * (int)round(scale) * player->collision_modifier * player->speed);
         // Az z tengely mentén (aminek az iránya egybe esik az y tengelyével a perspektiva miatt
         if((kyTop < player->loc.y && player->walk.vz < 0) || (player->shadowRect.y < kyBottom && 0 < player->walk.vz)) {
-            player->loc.y += player->walk.vz * 2 * (int)round(scale) * player->collision_modifier * player->speed;
-            player->shadowRect.y += player->walk.vz * 2 * (int)round(scale) * player->collision_modifier * player->speed;
+            //player->loc.y += player->walk.vz * 2 * (int)round(scale) * player->collision_modifier * player->speed;
+            //player->shadowRect.y += player->walk.vz * 2 * (int)round(scale) * player->collision_modifier * player->speed;
         }
         break;
     case s_walk:
@@ -142,7 +142,7 @@ void Animate_Flare(int Tick, struct character *player, struct projectile **projs
         player->loc.x += (player->vx == 0 ? player->walk.vx * 3 : player->vx) * (int)round(scale) * player->collision_modifier * player->speed;
 
         if(player->shadowRect.y - framesize + 4 < player->loc.y) {
-            player->loc.y = player->shadowRect.y - framesize + 4;
+            //player->loc.y = player->shadowRect.y - framesize + 4;
             player->act = a_walk;
             player->state = 0;
             player->jump.second = false;
@@ -252,7 +252,7 @@ void Animate_Flare(int Tick, struct character *player, struct projectile **projs
             player->state++;
             if(player->state == 6) {
                 player->loc.x = player->melee.x - framesize / 2;
-                player->loc.y = player->melee.y - framesize;
+                //player->loc.y = player->melee.y - framesize;
                 player->shadowRect.y = player->loc.y + framesize - 4;
                 soundeffect(chunk_teleport, player->loc.x + framesize/2, player->loc.y +framesize/2);
             }
@@ -332,7 +332,7 @@ void Animate_Flare(int Tick, struct character *player, struct projectile **projs
             player->shadowRect.y += player->vz * (int)round(scale);
         }
         if(player->shadowRect.y - framesize + 4 < player->loc.y - 30) {
-            player->loc.y = player->shadowRect.y - framesize + 4;
+            //player->loc.y = player->shadowRect.y - framesize + 4;
             player->act = ground;
             player->dmg = player->ground.dmg; // Fontos: ezt nem lehet a ground alján meghivni, az segfaulthoz vezet
             player->state = 0;

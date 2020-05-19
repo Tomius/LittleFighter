@@ -110,7 +110,7 @@ void Animate_Julian(int Tick, struct character *player, struct projectile **proj
             player->state++;
             if(player->state == player->s_melee_No) {
                 player->loc.x = player->melee.x - framesize / 2;
-                player->loc.y = player->melee.y - framesize;
+                //player->loc.y = player->melee.y - framesize;
                 player->shadowRect.y = player->loc.y + framesize - 4;
                 player->act = a_walk;
                 player->state = 0;

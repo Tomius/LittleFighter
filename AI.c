@@ -221,12 +221,13 @@ static void Melee_AI(struct character *iter, struct character *player, struct ch
             } else
                 iter->walk.vx = 0;
 
-            if(Enemy->loc.y + framesize / 4 < iter->loc.y)
+            /*if(Enemy->loc.y + framesize / 4 < iter->loc.y)
                 iter->walk.vz = -1;
             else if(Enemy->loc.y > iter->loc.y + framesize/4)
                 iter->walk.vz = 1;
             else
                 iter->walk.vz = 0;
+            */
         }
         // Ha az AI szintje nehéz, akkor az karakterek megpróbálnak védekezni is, persze csak ha kell
         if(Diff == Hard) {
