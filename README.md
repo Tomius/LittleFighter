@@ -18,6 +18,3 @@ Some screenshots:
 ![screenshot](screenshot0.jpg)
 ![screenshot](screenshot1.jpg)
 ![screenshot](screenshot2.jpg)
-
-----------------------
-If you have any problem, please post in the issues tab or mail me at icyplusplus@gmail.com. Any feedback would be appreciated.
